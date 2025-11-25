@@ -62,6 +62,7 @@ export const Input = styled.input`
     font-size: 24px;
     line-height: 28px;
     margin-bottom: 34px;
+    color:black;
 `;
 
 export const Button = styled.button`
@@ -87,3 +88,30 @@ export const Button = styled.button`
     } 
 
 `;
+export const User = styled.li`
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(255,255,255,255,0.25);
+    box-shadow: 0px 4px 4px tgba(0,0,0,0.25);
+    border-radius: 14px;
+    width: 342px;
+    height:58px ;
+    outline: none;
+    border:none;
+    color:white;
+
+p{
+    /*pois ele esta dentro do User */
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 28px;
+    background:none;
+    border:none;
+    cursor: pointer;
+    margin-top:20px;
+
+}
+
+`
