@@ -9,11 +9,25 @@ function App() {
 
 
     const [users, setUsers] = useState([])
+    const [name, setName] = useState("")
+    const [age, setAge] = useState("")
 
     function addNewUser(){
-      setUsers([{id:Math.random(),name:'Rodolfo',age:25}])
+      setUsers([...users,{id:Math.random(),name,age}]) //spreed operator(...users)(itens anteriores) + novo item
+
+
+      console.log(users)
     }
 
+    function changeInputName(event) {
+      setName(event.target.value)
+
+    }
+
+        function changeInputAge(event) {
+      setAge(event.target.value)
+
+    }
   return (
     <>
     <Container>
@@ -22,10 +36,10 @@ function App() {
         <H1>Olá!</H1>
 
         <InputLabel>Nome</InputLabel>
-        <Input placeholder="Nome" />
+        <Input onChange={changeInputName} placeholder="Nome" />
 
-        <InputLabel>Idade</InputLabel>
-        <Input placeholder="Idade" />
+        <InputLabel >Idade</InputLabel>
+        <Input onChange={changeInputAge} placeholder="Idade" />
         <Button onClick={addNewUser} >Cadastrar <img alt="imagem" src={Seta}/></Button>
         <ul>
           {users.map((user) => (
