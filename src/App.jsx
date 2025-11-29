@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Container, Image, ContainerItens, H1, InputLabel, Input, Button, User } from './styles';
 import axios from 'axios'
 import People from './assets/people.svg';
@@ -13,7 +13,6 @@ function App() {
   const inputName = useRef()
   const inputAge = useRef()
 
-  //React Hook 
 
   async function addNewUser() {
     // const {data:newUser} = await axios.post("http://localhost:3001/users",{name:inputName.current.value,age:inputAge.current.value})  //(endereço do backend,dados que ele pretende receber) //colocou o apelido de newUser,sendo data
@@ -23,11 +22,26 @@ function App() {
     // setUsers([...users,newUser])
 
     //Recuperar usuarios:
-    const {data:newUsers} = await axios.get("http://localhost:3001/users")
-    setUsers(newUsers)
+const { data: newUser } = await axios.post("http://localhost:3001/users", {
+  name: inputName.current.value,
+  age: inputAge.current.value
+})
+
+setUsers([...users, newUser])
+
   }
 
-    function deleteUser(userId){
+  //React Hook - useEffect(causa um efeito colateral):
+  useEffect(() => {
+    async function fetchUsers(){
+    const { data: newUsers } = await axios.get("http://localhost:3001/users")
+    setUsers(newUsers)
+    }
+    fetchUsers()
+  }, [])  /*(uma função anonima useEffect(()=> {},[])) O useEffect é chamado: Qunado minha aplicação inicia(A pagina carregou, useEffect é chamado!) e Quando um estado que esta no array de dependencia do useEffect é alterado. NÃO ACEITA O ASYNC ,SENDO NECESSARIO CRIAR UMA FUNÇÃO.*/
+
+  async function deleteUser(userId) {
+    await axios.delete(`http://localhost:3001/users/${userId}`)
     const newUsers = users.filter(user => user.id !== userId)
     setUsers(newUsers)
   }
