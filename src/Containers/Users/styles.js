@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Background from "../../assets/background.svg";
+import {Link} from "react-router-dom"
 import Seta from "../../assets/arrow.svg"
 
 export const Container = styled.div`
@@ -39,7 +40,7 @@ export const H1 = styled.h1`
     margin-bottom: 80px;
 `;
 
-export const Button = styled.button`
+export const Button = styled(Link)`
     background: transparent;
     color: white;
     cursor: pointer;

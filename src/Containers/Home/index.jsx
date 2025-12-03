@@ -44,7 +44,7 @@ setUsers([...users, newUser])
 
           <InputLabel >Idade</InputLabel>
           <Input ref={inputAge} placeholder="Idade" />
-          <Button onClick={addNewUser} >Cadastrar <img alt="imagem" src={Seta} /></Button>
+          <Button to="/usuarios" onClick={addNewUser} >Cadastrar <img alt="imagem" src={Seta} /></Button>
         </ContainerItens>
       </Container>
     </>

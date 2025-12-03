@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Background from "../../assets/back1.svg";
 import Seta from "../../assets/arrow.svg"
+import {Link} from "react-router-dom"
 
 export const Container = styled.div`
     background: url(${Background});
@@ -65,7 +66,7 @@ export const Input = styled.input`
     color:black;
 `;
 
-export const Button = styled.button`
+export const Button = styled(Link)`
     background: black;
     color: white;
     cursor: pointer;
